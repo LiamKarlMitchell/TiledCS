@@ -1,28 +1,27 @@
 ﻿{
-  "name": "TiledCS",
+  "name": "com.liamkarlmitchell.tiledcs",
   "version": "3.3.4",
-  "unity": "2019.4",
+  "displayName": "TiledCS",
   "description": "TiledCS is a dotnet library for loading Tiled tilesets and maps",
-  "keywords": ["tiled-map-editor", "monogame", "tmx", "tiled", "tiled-parser", "tmx-maps", "tmx-parser", "tiled-maps", "monogame-pipeline"],
+  "unity": "2018.3",
   "author": {
-    "name": "Ruben Labruyere",
-    "email": "",
-    "url": ""
+    "name": "Ruben Labruyere"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/LiamKarlMitchell/TiledCS"
   },
-  "unityRelease": {
-    "revision": "2019.4",
-    "version": "2019.4.10f1",
-    "state": "release",
-    "since": "2019-11-19"
-  },
-  "dependencies": {
-  },
-  "files": [
-    "src"
+  "dependencies": {},
+  "keywords": [
+    "tiled-map-editor",
+    "monogame",
+    "tmx",
+    "tiled",
+    "tiled-parser",
+    "tmx-maps",
+    "tmx-parser",
+    "tiled-maps",
+    "monogame-pipeline"
   ]
 }
