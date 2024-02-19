@@ -96,6 +96,21 @@ namespace TiledCS
         /// Returns the defined map background color as a hex string
         /// </summary>
         public string BackgroundColor { get; set; }
+        
+        /// <summary>
+        /// Returns the defined map Hex Side Length.
+        /// </summary>
+        public int HexSideLength { get; set; }
+
+        /// <summary>
+        /// Returns the defined map Stagger Index.
+        /// </summary>
+        public string StaggerIndex { get; set; }
+
+        /// <summary>
+        /// Returns the defined map Stagger Axis.
+        /// </summary>
+        public string StaggerAxis { get; set; }
 
         /// <summary>
         /// Returns an empty instance of TiledMap
@@ -163,6 +178,7 @@ namespace TiledCS
                 var nodesGroup = nodeMap.SelectNodes("group");
                 var attrParallaxOriginX = nodeMap.Attributes["parallaxoriginx"];
                 var attrParallaxOriginY = nodeMap.Attributes["parallaxoriginy"];
+                var hexSideLength = nodeMap.Attributes["hexsidelength"];
 
                 TiledVersion = nodeMap.Attributes["tiledversion"].Value;
                 Orientation = nodeMap.Attributes["orientation"].Value;
@@ -174,6 +190,8 @@ namespace TiledCS
                 Height = int.Parse(nodeMap.Attributes["height"].Value);
                 TileWidth = int.Parse(nodeMap.Attributes["tilewidth"].Value);
                 TileHeight = int.Parse(nodeMap.Attributes["tileheight"].Value);
+                StaggerAxis = nodeMap.Attributes["staggeraxis"]?.Value;
+                StaggerIndex = nodeMap.Attributes["staggerindex"]?.Value;
 
                 if (nodesProperty != null) Properties = ParseProperties(nodesProperty);
                 if (nodesTileset != null) Tilesets = ParseTilesets(nodesTileset);
@@ -181,6 +199,7 @@ namespace TiledCS
                 if (nodesGroup != null) Groups = ParseGroups(nodesGroup);
                 if (attrParallaxOriginX != null) ParallaxOriginX = float.Parse(attrParallaxOriginX.Value, CultureInfo.InvariantCulture);
                 if (attrParallaxOriginY != null) ParallaxOriginY = float.Parse(attrParallaxOriginY.Value, CultureInfo.InvariantCulture);
+                if (hexSideLength != null) HexSideLength = int.Parse(hexSideLength.Value, CultureInfo.InvariantCulture);
             }
             catch (Exception ex)
             {
@@ -802,7 +821,6 @@ namespace TiledCS
         /// <summary>
         /// Checks is a tile linked to an object is flipped vertically
         /// </summary>
-        /// <param name="layer">An entry of the TiledMap.layers array</param>
         /// <param name="tiledObject">The tiled object</param>
         /// <returns>True if the tile was flipped horizontally or False if not</returns>
         public bool IsTileFlippedVertical(TiledObject tiledObject)
